@@ -6,14 +6,17 @@
 
 <h1 class="text-danger">Error.</h1>
 <h2 class="text-danger">An error occurred while processing your request.</h2>
-<p>This page is /Error.cshtml so we need to make sure it is available to browse anonymously!</p>
 
-@if (Model.ShowRequestId)
+<p>This page is /Error.cshtml, and you are running in Release mode.</p>
+
+<p>Message is @Model.Message</p>
+
+@*@if (Model.ShowRequestId)
 {
     <p>
         <strong>Request ID:</strong> <code>@Model.RequestId</code>
     </p>
-}
+}*@
 
 <h3>Development Mode</h3>
 <p>

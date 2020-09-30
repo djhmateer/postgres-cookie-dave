@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace PostgresCookieDave.Web.Pages
 {
     public class ThrowExceptionModel : PageModel
     {
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            throw new Exception("user generated exception from code");
+            await Task.Delay(100);
+            throw new ApplicationException("Some logic went wrong - maybe an id not found that was expected");
         }
     }
 }

@@ -12,19 +12,19 @@ namespace PostgresCookieDave.Web.Pages
     {
         public string? Message { get; set; }
         public string? Message2 { get; set; }
-        public Employee SingleEmployee { get; set; }
+        public Employee? SingleEmployee { get; set; }
 
-        public async void OnGetAsync()
+        public async Task OnGetAsync()
         {
             // works
-            using (var connection = new NpgsqlConnection("Host=localhost;Username=postgres;Password=letmein;Database=PostgresCookieDave"))
-            {
-                connection.Open();
-                //connection.Execute("Insert into Employee (first_name, last_name, address) values ('John', 'Smith', '123 Duane St');");
-                var value = connection.Query("Select first_name from Employee;");
-                Message = $"name in db is: {value.First()}";
-                //Console.WriteLine(value.First());
-            }
+            //using (var connection = new NpgsqlConnection("Host=localhost;Username=postgres;Password=letmein;Database=PostgresCookieDave"))
+            //{
+            //    connection.Open();
+            //    //connection.Execute("Insert into Employee (first_name, last_name, address) values ('John', 'Smith', '123 Duane St');");
+            //    var value = connection.Query("Select first_name from Employee;");
+            //    Message = $"name in db is: {value.First()}";
+            //    //Console.WriteLine(value.First());
+            //}
 
             // doesn't work
             //var db = GetOpenConnection();
@@ -35,20 +35,21 @@ namespace PostgresCookieDave.Web.Pages
 
             // try3 
             var connectionString = "Host=localhost;Username=postgres;Password=letmein;Database=PostgresCookieDave";
+
+            // am getting an exception here
             var employee = await Db.GetEmployee(connectionString);
-
-
+            SingleEmployee = employee;
         }
 
-        public static IDbConnection GetOpenConnection()
-        {
-            using (var connection = new NpgsqlConnection("Host=localhost;Username=postgres;Password=letmein;Database=PostgresCookieDave"))
-            {
-                connection.Open();
+        //public static IDbConnection GetOpenConnection()
+        //{
+        //    using (var connection = new NpgsqlConnection("Host=localhost;Username=postgres;Password=letmein;Database=PostgresCookieDave"))
+        //    {
+        //        connection.Open();
 
-                return connection;
-            }
-        }
+        //        return connection;
+        //    }
+        //}
     }
 
     public static class Db
@@ -60,7 +61,7 @@ namespace PostgresCookieDave.Web.Pages
                         "SELECT first_name as FirstName, last_name as LastName, address as Address " +
                         "FROM Employee");
 
-                    return result.First();
+                    return result.FirstOrDefault();
                 });
 
         private static async Task<T> WithConnection<T>(

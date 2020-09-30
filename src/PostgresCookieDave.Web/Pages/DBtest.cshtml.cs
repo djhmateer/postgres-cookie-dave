@@ -32,13 +32,11 @@ namespace CookieDave.Web.Pages
                 //Console.WriteLine(value.First());
             }
 
-            using (var db = GetOpenConnection())
-            {
-                //var employeex = db.Query<Employee>("Select first_name from Employee");
-                var employeex = db.Query("Select first_name from Employee");
-                var employee = employeex.First();
-                Message2 = $"{employee.first_name} {employee.last_name} {employee.address}";
-            }
+            var db = GetOpenConnection();
+            //var employeex = db.Query<Employee>("Select first_name from Employee");
+            var employeex = db.Query("Select first_name from Employee");
+            var employee = employeex.First();
+            Message2 = $"{employee.first_name} {employee.last_name} {employee.address}";
         }
 
         public static IDbConnection GetOpenConnection()

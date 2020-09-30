@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CookieDave.Web\PostgresCookieDave.Web.csproj" />
+    <ProjectReference Include="..\PostgresCookieDave.Web\PostgresCookieDave.Web.csproj" />
   </ItemGroup>
 
 </Project>

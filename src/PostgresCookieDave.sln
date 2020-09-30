@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostgresCookieDave.Web", "CookieDave.Web\PostgresCookieDave.Web.csproj", "{509CEBFC-669D-4E21-94F1-104606480117}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostgresCookieDave.Web", "PostgresCookieDave.Web\PostgresCookieDave.Web.csproj", "{509CEBFC-669D-4E21-94F1-104606480117}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostgresCookieDave.Web.IntegrationTests", "CookieDave.Web.IntegrationTests\PostgresCookieDave.Web.IntegrationTests.csproj", "{A60467D9-01D0-464B-A7D8-9193E1688A42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostgresCookieDave.Web.IntegrationTests", "PostgresCookieDave.Web.IntegrationTests\PostgresCookieDave.Web.IntegrationTests.csproj", "{A60467D9-01D0-464B-A7D8-9193E1688A42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

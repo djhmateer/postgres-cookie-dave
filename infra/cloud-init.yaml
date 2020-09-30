@@ -1,0 +1,86 @@
+#cloud-config
+
+# /var/log/cloud-init-output.log for debugging this script 
+
+# openresty nginx logs in /usr/local/openresty/nginx/logs/error.log and access.log
+# nginx conf in /usr/local/openresty/nginx/conf
+# to restart openresty after a conf update: sudo systemctl restart openresty
+
+# ~/testout.txt for the dotnet test output
+
+package_upgrade: true
+runcmd:
+  # install dotnet
+  - wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+  - sudo dpkg -i packages-microsoft-prod.deb
+  - sudo add-apt-repository universe -y
+  - sudo apt-get update -y
+  - sudo apt-get install apt-transport-https -y
+  - sudo apt-get update -y
+
+  # need the sdk as we'll be compiling
+  - sudo apt-get install dotnet-sdk-3.1 -y
+
+  # nginx
+  - sudo apt-get install nginx -y
+
+  # a nice shortcut sym link
+  # - sudo ln -s /var/www/ /home/dave/www
+
+  # a nice restart command for nginx
+  - cd /home/dave
+  - echo "sudo systemctl restart nginx" > s.sh
+  - sudo chmod 777 s.sh
+
+  # clone source
+  - cd /home/dave
+  - sudo git clone https://github.com/djhmateer/cookie-dave.git cookie-dave-source
+
+  # run the tests on the server as a last ditch safety net (make sure tests run linux side)
+  - cd cookie-dave-source/src/CookieDave.Web.IntegrationTests
+  - sudo dotnet test -v n > /home/dave/testout.txt
+
+
+  # create a publish directory for Kestrel
+  - sudo mkdir /var/www/cookie-dave-web
+
+
+   # publish the web app
+  - cd /home/dave/cookie-dave-source/src/CookieDave.Web
+  - sudo dotnet publish --configuration Release 
+
+  # copy files to www directory
+  - cd /home/dave/cookie-dave-source/src/CookieDave.Web/bin/Release/netcoreapp3.1/publish/
+  - sudo cp -a * /var/www/cookie-dave-web/.
+
+ # change ownership of the files - TODO review this
+  # - sudo chown -R www-data:www-data /var/www/blsource
+  - sudo chown -R www-data:www-data /var/www/cookie-dave-web
+  # - sudo chmod -R 777 /var/www/blsource
+
+  # nginx config
+  - sudo cp /home/dave/cookie-dave-source/infra/nginx.conf /etc/nginx/sites-available/default
+  - sudo nginx -s reload
+
+  # get rid of the default nginx files
+  - sudo rm -rf /var/www/html
+
+  # make the systemd service to keep Kestrel alive
+  - sudo cp /home/dave/cookie-dave-source/infra/kestrel-cookie-dave.service /etc/systemd/system/kestrel-cookie-dave.service
+  - sudo systemctl enable kestrel-cookie-dave.service
+  - sudo systemctl start kestrel-cookie-dave.service
+
+#
+# Bashtop
+#
+  - echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
+  - sudo wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
+  - sudo apt update -y
+  - sudo apt install bashtop -y
+
+# make a quick test page to signify that the server is ready to go
+  # - cd /var/www/cookie-dave-web
+  # - echo "Healthy" > healthcheck.html
+
+# OS updates need a reboot 
+  - sudo reboot now

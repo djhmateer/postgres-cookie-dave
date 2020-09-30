@@ -34,41 +34,35 @@ runcmd:
 
   # clone source
   - cd /home/dave
-  - sudo git clone https://github.com/djhmateer/postgres-cookie-dave.git cookie-dave-source
+  - sudo git clone https://github.com/djhmateer/postgres-cookie-dave.git source
 
   # run the tests on the server as a last ditch safety net (make sure tests run linux side)
-  - cd cookie-dave-source/src/CookieDave.Web.IntegrationTests
+  - cd source/src/PostgresCookieDave.Web.IntegrationTests
   - sudo dotnet test -v n > /home/dave/testout.txt
 
-
-  # create a publish directory for Kestrel
-  - sudo mkdir /var/www/cookie-dave-web
-
-
-   # publish the web app
-  - cd /home/dave/cookie-dave-source/src/CookieDave.Web
+  # publish the web app
+  - cd /home/dave/source/src/PostgresCookieDave.Web
   - sudo dotnet publish --configuration Release 
 
   # copy files to www directory
-  - cd /home/dave/cookie-dave-source/src/CookieDave.Web/bin/Release/netcoreapp3.1/publish/
-  - sudo cp -a * /var/www/cookie-dave-web/.
+  - cd /home/dave/source/src/PostgresCookieDave.Web/bin/Release/netcoreapp3.1/publish/
+  - sudo mkdir /var/www/web
+  - sudo cp -a * /var/www/web/.
 
- # change ownership of the files - TODO review this
-  # - sudo chown -R www-data:www-data /var/www/blsource
-  - sudo chown -R www-data:www-data /var/www/cookie-dave-web
-  # - sudo chmod -R 777 /var/www/blsource
+  # change ownership of the files - TODO review this
+  - sudo chown -R www-data:www-data /var/www/web
 
   # nginx config
-  - sudo cp /home/dave/cookie-dave-source/infra/nginx.conf /etc/nginx/sites-available/default
+  - sudo cp /home/dave/source/infra/nginx.conf /etc/nginx/sites-available/default
   - sudo nginx -s reload
 
   # get rid of the default nginx files
   - sudo rm -rf /var/www/html
 
   # make the systemd service to keep Kestrel alive
-  - sudo cp /home/dave/cookie-dave-source/infra/kestrel-cookie-dave.service /etc/systemd/system/kestrel-cookie-dave.service
-  - sudo systemctl enable kestrel-cookie-dave.service
-  - sudo systemctl start kestrel-cookie-dave.service
+  - sudo cp /home/dave/source/infra/kestrel.service /etc/systemd/system/kestrel.service
+  - sudo systemctl enable kestrel.service
+  - sudo systemctl start kestrel.service
 
 #
 # Bashtop

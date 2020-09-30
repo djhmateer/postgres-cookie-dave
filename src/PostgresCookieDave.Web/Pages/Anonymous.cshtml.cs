@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace CookieDave.Web.Pages
+namespace PostgresCookieDave.Web.Pages
 {
     public class AnonymousModel : PageModel
     {

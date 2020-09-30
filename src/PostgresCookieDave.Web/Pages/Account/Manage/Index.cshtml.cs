@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace CookieDave.Web.Pages.Account.Manage
+namespace PostgresCookieDave.Web.Pages.Account.Manage
 {
     [Authorize]
     public class IndexModel : PageModel

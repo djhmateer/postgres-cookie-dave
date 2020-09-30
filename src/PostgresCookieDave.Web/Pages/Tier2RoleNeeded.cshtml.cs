@@ -1,8 +1,8 @@
-﻿using CookieDave.Web.Data;
+﻿using PostgresCookieDave.Web.Data;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using static CookieDave.Web.Data.CDRole;
+using static PostgresCookieDave.Web.Data.CDRole;
 
-namespace CookieDave.Web.Pages
+namespace PostgresCookieDave.Web.Pages
 {
     [AuthorizeRoles(Tier2, Admin)]
     public class Tier2RoleNeeded : PageModel

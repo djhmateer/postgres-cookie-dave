@@ -1,15 +1,12 @@
-using System;
-using CookieDave.Web.Services;
+using PostgresCookieDave.Web.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace CookieDave.Web
+namespace PostgresCookieDave.Web
 {
     public class Startup
     {

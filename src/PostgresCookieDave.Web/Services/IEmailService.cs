@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace CookieDave.Web.Services
+namespace PostgresCookieDave.Web.Services
 {
     public interface IEmailService
     {

@@ -2,9 +2,10 @@
 using System.Net;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using CookieDave.Web.Data;
 using CookieDave.Web.IntegrationTests.Helpers;
 using Microsoft.AspNetCore.Mvc.Testing;
+using PostgresCookieDave.Web;
+using PostgresCookieDave.Web.Data;
 using Xunit;
 
 namespace CookieDave.Web.IntegrationTests.Pages

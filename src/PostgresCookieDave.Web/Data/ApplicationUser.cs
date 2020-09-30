@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace CookieDave.Web.Data
+namespace PostgresCookieDave.Web.Data
 {
     public class ApplicationUser
     {

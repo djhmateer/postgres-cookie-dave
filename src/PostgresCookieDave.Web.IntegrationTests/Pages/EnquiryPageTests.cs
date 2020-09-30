@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using AngleSharp.Html.Dom;
 using CookieDave.Web.IntegrationTests.Fakes;
 using CookieDave.Web.IntegrationTests.Helpers;
-using CookieDave.Web.Services;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
+using PostgresCookieDave.Web;
+using PostgresCookieDave.Web.Services;
 using Xunit;
 
 namespace CookieDave.Web.IntegrationTests.Pages

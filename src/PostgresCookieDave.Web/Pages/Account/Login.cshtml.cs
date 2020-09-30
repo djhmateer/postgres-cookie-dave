@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using CookieDave.Web.Data;
+using PostgresCookieDave.Web.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Collections.Generic;
 using Serilog;
 
-namespace CookieDave.Web.Pages.Account
+namespace PostgresCookieDave.Web.Pages.Account
 {
     public class LoginModel : PageModel
     {

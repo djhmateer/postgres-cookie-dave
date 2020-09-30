@@ -1,9 +1,8 @@
-﻿using CookieDave.Web.Data;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using static CookieDave.Web.Data.CDRole;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using PostgresCookieDave.Web.Data;
+using static PostgresCookieDave.Web.Data.CDRole;
 
-namespace CookieDave.Web.Pages
+namespace PostgresCookieDave.Web.Pages
 {
     [AuthorizeRoles(Admin)]
     public class AdminRoleNeededModel : PageModel

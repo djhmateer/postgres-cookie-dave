@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using CookieDave.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using PostgresCookieDave.Web.Services;
 
-namespace CookieDave.Web.Pages
+namespace PostgresCookieDave.Web.Pages
 {
     public class EnquiryModel : PageModel
     {

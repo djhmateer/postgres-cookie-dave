@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using CookieDave.Web.IntegrationTests.Helpers;
 using Microsoft.AspNetCore.Mvc.Testing;
+using PostgresCookieDave.Web;
 using Xunit;
 
 namespace CookieDave.Web.IntegrationTests

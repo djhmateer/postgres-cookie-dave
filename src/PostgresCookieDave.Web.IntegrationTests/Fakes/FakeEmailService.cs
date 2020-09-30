@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CookieDave.Web.Services;
+using PostgresCookieDave.Web.Services;
 
 namespace CookieDave.Web.IntegrationTests.Fakes
 {

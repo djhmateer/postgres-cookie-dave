@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
+using PostgresCookieDave.Web.Services;
 
-namespace CookieDave.Web.Services
+namespace PostgresCookieDave.Web.Services
 {
     public class EmailService : IEmailService
     {

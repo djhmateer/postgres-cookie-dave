@@ -1,3 +1,3 @@
 
-ssh -o StrictHostKeyChecking=no dave@postgrescookiedavetest711.westeurope.cloudapp.azure.com
+ssh -o StrictHostKeyChecking=no dave@postgrescookiedavetest123.westeurope.cloudapp.azure.com
 

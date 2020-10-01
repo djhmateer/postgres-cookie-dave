@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 
 namespace PostgresCookieDave.Web
 {
@@ -62,6 +63,9 @@ namespace PostgresCookieDave.Web
 
             app.UseStaticFiles();
             app.UseRouting();
+
+            // don't want request logging for static files so put it here in the pipeline
+            app.UseSerilogRequestLogging();
 
             app.UseAuthentication();
             app.UseAuthorization();

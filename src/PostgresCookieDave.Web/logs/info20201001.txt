@@ -1,0 +1,19 @@
+2020-10-01 13:25:17.289 +01:00 [INF] Starting up
+2020-10-01 13:25:18.141 +01:00 [INF] Now listening on: http://localhost:5000
+2020-10-01 13:25:18.180 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-01 13:25:18.195 +01:00 [INF] Hosting environment: Development
+2020-10-01 13:25:18.198 +01:00 [INF] Content root path: c:\dev\test\postgres-cookie-dave\src\PostgresCookieDave.Web
+2020-10-01 13:26:04.298 +01:00 [INF] Application is shutting down...
+2020-10-01 13:29:03.931 +01:00 [INF] Starting up
+2020-10-01 13:29:04.443 +01:00 [INF] Now listening on: http://localhost:5000
+2020-10-01 13:29:04.453 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-01 13:29:04.456 +01:00 [INF] Hosting environment: Development
+2020-10-01 13:29:04.460 +01:00 [INF] Content root path: c:\dev\test\postgres-cookie-dave\src\PostgresCookieDave.Web
+2020-10-01 13:29:07.667 +01:00 [INF] HTTP GET / responded 200 in 388.2698 ms
+2020-10-01 13:29:10.541 +01:00 [INF] HTTP GET /Anonymous responded 200 in 24.8000 ms
+2020-10-01 13:29:12.212 +01:00 [INF] HTTP GET / responded 200 in 9.8181 ms
+2020-10-01 13:29:13.514 +01:00 [INF] HTTP GET /Anonymous responded 200 in 4.3991 ms
+2020-10-01 13:29:14.651 +01:00 [INF] HTTP GET /Tier1RoleNeeded responded 302 in 12.4458 ms
+2020-10-01 13:29:14.763 +01:00 [INF] /Tier1RoleNeeded
+2020-10-01 13:29:14.941 +01:00 [INF] HTTP GET /Account/Login?ReturnUrl=%2FTier1RoleNeeded responded 200 in 258.3827 ms
+2020-10-01 13:29:19.682 +01:00 [INF] HTTP GET /DBTest responded 200 in 1032.5625 ms

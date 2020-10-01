@@ -2,7 +2,10 @@
 
 # /var/log/cloud-init-output.log for debugging this script 
 
-# openresty nginx logs in /usr/local/openresty/nginx/logs/error.log and access.log
+# kestrel (.NET Serilog) logs in /var/www/web/logs/
+# nginx logs in /usr/local/openresty/nginx/logs/error.log and access.log
+
+
 # nginx conf in /usr/local/openresty/nginx/conf
 # to restart openresty after a conf update: sudo systemctl restart openresty
 
@@ -79,6 +82,12 @@ runcmd:
   - sudo apt-get -y install postgresql
 
   - sudo systemctl start postgresql@12-main
+
+  # configure postgres
+  - sudo -u postgres psql -c "CREATE ROLE bob SUPERUSER LOGIN PASSWORD 'letmein3';"
+  - sudo -u postgres psql -c "CREATE DATABASE postgrescookiedave;"
+  - sudo -u postgres psql -c "CREATE TABLE employee (first_name varchar (100), last_name varchar (100), address varchar (4000));" postgrescookiedave
+  - sudo -u postgres psql -c "Insert into Employee (first_name, last_name, address) values ('John', 'Smith', '123 Duane St');" postgrescookiedave
 
 # make a quick test page to signify that the server is ready to go
   # - cd /var/www/cookie-dave-web

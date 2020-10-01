@@ -4,15 +4,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
 using Npgsql;
+using Serilog;
 
 namespace PostgresCookieDave.Web.Pages
 {
     public class DBTestModel : PageModel
     {
+        private readonly IConfiguration _configuration;
+
         public string? Message { get; set; }
         public string? Message2 { get; set; }
-        public Employee? SingleEmployee { get; set; }
+        public Employee SingleEmployee { get; set; }
+
+        public DBTestModel(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         public async Task OnGetAsync()
         {
@@ -34,10 +43,11 @@ namespace PostgresCookieDave.Web.Pages
             //Message2 = $"{employee.first_name} {employee.last_name} {employee.address}";
 
             // try3 
-            var connectionString = "Host=localhost;Username=postgres;Password=letmein;Database=PostgresCookieDave";
+            //var connectionString = "Host=localhost;Username=postgres;Password=letmein;Database=PostgresCookieDave";
 
-            // am getting an exception here
-            var employee = await Db.GetEmployee(connectionString);
+            var connectionString = _configuration.GetConnectionString("Default");
+
+            var employee = await Db.GetSingleEmployee(connectionString);
             SingleEmployee = employee;
         }
 
@@ -54,7 +64,7 @@ namespace PostgresCookieDave.Web.Pages
 
     public static class Db
     {
-        public static Task<Employee> GetEmployee(string connectionString)
+        public static Task<Employee> GetSingleEmployee(string connectionString)
             => WithConnection(connectionString, async conn =>
                 {
                     var result = await conn.QueryAsync<Employee>(
@@ -77,8 +87,6 @@ namespace PostgresCookieDave.Web.Pages
         }
 
     }
-
-
 
     public class Employee
     {

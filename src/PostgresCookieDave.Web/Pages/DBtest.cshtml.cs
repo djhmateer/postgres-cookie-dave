@@ -19,7 +19,7 @@ namespace PostgresCookieDave.Web.Pages
         public string? Message { get; set; }
         public string? Message2 { get; set; }
         public Employee SingleEmployee { get; set; }
-        public IEnumerable<Employee> Employees { get; set; }
+        public IList<Employee> Employees { get; set; }
 
         public DBTestModel(IConfiguration configuration)
         {
@@ -54,7 +54,7 @@ namespace PostgresCookieDave.Web.Pages
             SingleEmployee = employee;
 
             var employees = await Db.GetEmployees(connectionString);
-            Employees = employees;
+            Employees = employees.ToList();
         }
 
         //public static IDbConnection GetOpenConnection()

@@ -182,3 +182,15 @@ Npgsql.PostgresException (0x80004005): 28P01: password authentication failed for
 2020-10-02 11:22:21.343 +01:00 [INF] HTTP GET / responded 200 in 4.9748 ms
 2020-10-02 11:22:22.280 +01:00 [INF] HTTP GET /DBTest responded 200 in 28.9411 ms
 2020-10-02 11:22:27.708 +01:00 [INF] Application is shutting down...
+2020-10-02 11:38:24.256 +01:00 [INF] Starting up
+2020-10-02 11:38:24.663 +01:00 [INF] Now listening on: http://localhost:5000
+2020-10-02 11:38:24.671 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-02 11:38:24.672 +01:00 [INF] Hosting environment: Development
+2020-10-02 11:38:24.674 +01:00 [INF] Content root path: c:\dev\test\postgres-cookie-dave\src\PostgresCookieDave.Web
+2020-10-02 11:38:27.749 +01:00 [INF] HTTP GET / responded 200 in 394.4280 ms
+2020-10-02 11:38:31.500 +01:00 [INF] HTTP GET /Anonymous responded 200 in 18.0224 ms
+2020-10-02 11:38:32.540 +01:00 [INF] HTTP GET / responded 200 in 8.6342 ms
+2020-10-02 11:38:33.164 +01:00 [INF] HTTP GET /Anonymous responded 200 in 4.3640 ms
+2020-10-02 11:38:35.490 +01:00 [INF] HTTP GET /DBTest responded 200 in 1154.8363 ms
+2020-10-02 11:38:38.849 +01:00 [INF] HTTP GET / responded 200 in 12.9830 ms
+2020-10-02 11:38:55.037 +01:00 [INF] Application is shutting down...

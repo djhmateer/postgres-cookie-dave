@@ -194,3 +194,26 @@ Npgsql.PostgresException (0x80004005): 28P01: password authentication failed for
 2020-10-02 11:38:35.490 +01:00 [INF] HTTP GET /DBTest responded 200 in 1154.8363 ms
 2020-10-02 11:38:38.849 +01:00 [INF] HTTP GET / responded 200 in 12.9830 ms
 2020-10-02 11:38:55.037 +01:00 [INF] Application is shutting down...
+2020-10-02 11:47:52.503 +01:00 [INF] Starting up
+2020-10-02 11:47:52.938 +01:00 [INF] Now listening on: http://localhost:5000
+2020-10-02 11:47:52.944 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-02 11:47:52.946 +01:00 [INF] Hosting environment: Development
+2020-10-02 11:47:52.948 +01:00 [INF] Content root path: c:\dev\test\postgres-cookie-dave\src\PostgresCookieDave.Web
+2020-10-02 11:47:55.572 +01:00 [INF] HTTP GET / responded 200 in 254.4406 ms
+2020-10-02 11:47:59.892 +01:00 [INF] HTTP GET /DBTest responded 200 in 1417.3240 ms
+2020-10-02 11:48:04.843 +01:00 [INF] Application is shutting down...
+2020-10-02 11:49:18.234 +01:00 [INF] Starting up
+2020-10-02 11:49:18.678 +01:00 [INF] Now listening on: http://localhost:5000
+2020-10-02 11:49:18.684 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-02 11:49:18.686 +01:00 [INF] Hosting environment: Development
+2020-10-02 11:49:18.687 +01:00 [INF] Content root path: c:\dev\test\postgres-cookie-dave\src\PostgresCookieDave.Web
+2020-10-02 11:49:22.069 +01:00 [INF] HTTP GET / responded 200 in 218.5906 ms
+2020-10-02 11:50:32.800 +01:00 [INF] Application is shutting down...
+2020-10-02 11:52:02.606 +01:00 [INF] Starting up
+2020-10-02 11:52:03.088 +01:00 [INF] Now listening on: http://localhost:5000
+2020-10-02 11:52:03.094 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-02 11:52:03.096 +01:00 [INF] Hosting environment: Development
+2020-10-02 11:52:03.098 +01:00 [INF] Content root path: c:\dev\test\postgres-cookie-dave\src\PostgresCookieDave.Web
+2020-10-02 11:52:03.921 +01:00 [INF] HTTP GET / responded 200 in 198.0500 ms
+2020-10-02 11:52:08.005 +01:00 [INF] HTTP GET /DBTest responded 200 in 924.1074 ms
+2020-10-02 11:52:18.357 +01:00 [INF] Application is shutting down...

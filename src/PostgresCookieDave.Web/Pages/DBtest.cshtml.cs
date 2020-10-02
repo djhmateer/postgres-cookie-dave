@@ -17,7 +17,8 @@ namespace PostgresCookieDave.Web.Pages
         private readonly IConfiguration _configuration;
 
         public string? Message { get; set; }
-        public string? Message2 { get; set; }
+        public string? EnvironmentString { get; set; }
+        public string? ConnectionString { get; set; }
         public Employee SingleEmployee { get; set; }
         public IList<Employee> Employees { get; set; }
 
@@ -48,7 +49,12 @@ namespace PostgresCookieDave.Web.Pages
             // try3 
             //var connectionString = "Host=localhost;Username=postgres;Password=letmein;Database=PostgresCookieDave";
 
+            // environment
+            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            EnvironmentString = environment;
+
             var connectionString = _configuration.GetConnectionString("Default");
+            ConnectionString = connectionString;
 
             var employee = await Db.GetSingleEmployee(connectionString);
             SingleEmployee = employee;

@@ -90,8 +90,8 @@ runcmd:
   # - sudo -u postgres psql -c "Insert into Employee (first_name, last_name, address) values ('John', 'Smith', '123 Duane St');" postgrescookiedave
 
   # run .sql
-    # - sudo -u postgres psql -f createDbAndRole.sql
-    # - sudo -u postgres psql -d postgrescookiedave -f insertData.sql
+    # sudo -u postgres psql -f createDbAndRole.sql
+    # sudo -u postgres psql -d postgrescookiedave -f insertData.sql
 
 # make a quick test page to signify that the server is ready to go
   # - cd /var/www/cookie-dave-web

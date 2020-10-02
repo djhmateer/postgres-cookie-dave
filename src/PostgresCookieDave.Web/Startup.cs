@@ -3,20 +3,23 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using Microsoft.EntityFrameworkCore;
+using PostgresCookieDave.Web.Data;
 
 namespace PostgresCookieDave.Web
 {
     public class Startup
     {
-        //public Startup(IConfiguration configuration)
-        //{
-        //    Configuration = configuration;
-        //}
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
 
-        //public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -29,6 +32,9 @@ namespace PostgresCookieDave.Web
             services.AddHttpContextAccessor();
 
             services.AddSingleton<IEmailService, EmailService>();
+
+            services.AddDbContext<PostgresCookieDaveWebContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("PostgresCookieDaveWebContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

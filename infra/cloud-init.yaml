@@ -85,19 +85,16 @@ runcmd:
 
   # configure postgres
   # - sudo -u postgres psql -c "CREATE ROLE bob SUPERUSER LOGIN PASSWORD 'letmein3';"
-  # - sudo -u postgres psql -c "CREATE DATABASE postgrescookiedave;"
-  # - sudo -u postgres psql -c "CREATE TABLE employee (first_name varchar (100), last_name varchar (100), address varchar (4000));" postgrescookiedave
-  # - sudo -u postgres psql -c "Insert into Employee (first_name, last_name, address) values ('John', 'Smith', '123 Duane St');" postgrescookiedave
 
   # create Db, Role of Bob for app to conect to 
   # -a is to print all the output inclding data to stdout (useful for debugging)
-   - cd /home/dave/source/infra
-   - sudo -u postgres psql -a -f create_db.sql
-   - sudo -u postgres psql -a -f create_role.sql
+  - cd /home/dave/source/infra
+  # - sudo -u postgres psql -a -f create_db.sql
+  # - sudo -u postgres psql -a -f create_role.sql
 
-   # insert seed data
-   - sudo -u postgres psql -d postgrescookiedave -a -f create_tables.sql
-   - sudo -u postgres psql -d postgrescookiedave -a -f insert_data.sql
+  # insert seed data
+  # - sudo -u postgres psql -d postgrescookiedave -a -f create_tables.sql
+  # - sudo -u postgres psql -d postgrescookiedave -a -f insert_data.sql
 
 # make a quick test page to signify that the server is ready to go
   # - cd /var/www/cookie-dave-web

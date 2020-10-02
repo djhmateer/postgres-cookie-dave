@@ -217,3 +217,69 @@ Npgsql.PostgresException (0x80004005): 28P01: password authentication failed for
 2020-10-02 11:52:03.921 +01:00 [INF] HTTP GET / responded 200 in 198.0500 ms
 2020-10-02 11:52:08.005 +01:00 [INF] HTTP GET /DBTest responded 200 in 924.1074 ms
 2020-10-02 11:52:18.357 +01:00 [INF] Application is shutting down...
+2020-10-02 11:54:11.455 +01:00 [INF] Starting up
+2020-10-02 11:54:11.876 +01:00 [INF] Now listening on: http://localhost:5000
+2020-10-02 11:54:11.883 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-02 11:54:11.886 +01:00 [INF] Hosting environment: Development
+2020-10-02 11:54:11.888 +01:00 [INF] Content root path: c:\dev\test\postgres-cookie-dave\src\PostgresCookieDave.Web
+2020-10-02 11:54:15.093 +01:00 [INF] HTTP GET / responded 200 in 361.9382 ms
+2020-10-02 11:54:19.193 +01:00 [INF] HTTP GET /DBTest responded 200 in 1366.0329 ms
+2020-10-02 11:54:22.221 +01:00 [INF] HTTP GET / responded 200 in 8.9617 ms
+2020-10-02 11:54:23.472 +01:00 [INF] HTTP GET /DBTest responded 200 in 29.3299 ms
+2020-10-02 11:54:25.877 +01:00 [INF] HTTP GET / responded 200 in 9.8313 ms
+2020-10-02 11:54:29.306 +01:00 [ERR] HTTP GET /ThrowException responded 500 in 120.7994 ms
+System.ApplicationException: Some logic went wrong - maybe an id not found that was expected
+   at PostgresCookieDave.Web.Pages.ThrowExceptionModel.OnGetAsync() in c:\dev\test\postgres-cookie-dave\src\PostgresCookieDave.Web\Pages\ThrowException.cshtml.cs:line 12
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.ExecutorFactory.NonGenericTaskHandlerMethod.Execute(Object receiver, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.InvokeHandlerMethodAsync()
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.InvokeNextPageFilterAsync()
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.Rethrow(PageHandlerExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2020-10-02 11:54:29.511 +01:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ApplicationException: Some logic went wrong - maybe an id not found that was expected
+   at PostgresCookieDave.Web.Pages.ThrowExceptionModel.OnGetAsync() in c:\dev\test\postgres-cookie-dave\src\PostgresCookieDave.Web\Pages\ThrowException.cshtml.cs:line 12
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.ExecutorFactory.NonGenericTaskHandlerMethod.Execute(Object receiver, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.InvokeHandlerMethodAsync()
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.InvokeNextPageFilterAsync()
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.Rethrow(PageHandlerExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at PostgresCookieDave.Web.Startup.<>c.<<Configure>b__1_0>d.MoveNext() in c:\dev\test\postgres-cookie-dave\src\PostgresCookieDave.Web\Startup.cs:line 59
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2020-10-02 11:54:33.814 +01:00 [INF] HTTP GET /DBTest responded 200 in 44.4956 ms
+2020-10-02 11:57:18.402 +01:00 [INF] Starting up
+2020-10-02 11:57:18.852 +01:00 [INF] Now listening on: http://localhost:5000
+2020-10-02 11:57:18.859 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-02 11:57:18.861 +01:00 [INF] Hosting environment: Development
+2020-10-02 11:57:18.862 +01:00 [INF] Content root path: c:\dev\test\postgres-cookie-dave\src\PostgresCookieDave.Web
+2020-10-02 11:57:21.908 +01:00 [INF] HTTP GET / responded 200 in 264.7492 ms
+2020-10-02 11:57:26.117 +01:00 [INF] HTTP GET /DBTest responded 200 in 1540.3171 ms
+2020-10-02 11:58:36.132 +01:00 [INF] Application is shutting down...
+2020-10-02 12:00:29.876 +01:00 [INF] Starting up
+2020-10-02 12:00:30.533 +01:00 [INF] Now listening on: http://localhost:5000
+2020-10-02 12:00:30.540 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-10-02 12:00:30.542 +01:00 [INF] Hosting environment: Development
+2020-10-02 12:00:30.544 +01:00 [INF] Content root path: c:\dev\test\postgres-cookie-dave\src\PostgresCookieDave.Web
+2020-10-02 12:00:31.231 +01:00 [INF] HTTP GET / responded 200 in 187.9953 ms
+2020-10-02 12:00:34.649 +01:00 [INF] HTTP GET /DBTest responded 200 in 1199.4952 ms
+2020-10-02 12:00:37.404 +01:00 [INF] Application is shutting down...

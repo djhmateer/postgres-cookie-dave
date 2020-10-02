@@ -16,7 +16,6 @@ namespace PostgresCookieDave.Web.Pages
     {
         private readonly IConfiguration _configuration;
 
-        public string? Message { get; set; }
         public string? EnvironmentString { get; set; }
         public string? ConnectionString { get; set; }
         public Employee SingleEmployee { get; set; }

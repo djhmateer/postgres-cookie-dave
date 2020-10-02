@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,6 +19,7 @@ namespace PostgresCookieDave.Web.Pages
         public string? Message { get; set; }
         public string? Message2 { get; set; }
         public Employee SingleEmployee { get; set; }
+        public IEnumerable<Employee> Employees { get; set; }
 
         public DBTestModel(IConfiguration configuration)
         {
@@ -49,6 +52,9 @@ namespace PostgresCookieDave.Web.Pages
 
             var employee = await Db.GetSingleEmployee(connectionString);
             SingleEmployee = employee;
+
+            var employees = await Db.GetEmployees(connectionString);
+            Employees = employees;
         }
 
         //public static IDbConnection GetOpenConnection()
@@ -74,6 +80,17 @@ namespace PostgresCookieDave.Web.Pages
                     return result.FirstOrDefault();
                 });
 
+        public static Task<IEnumerable<Employee>> GetEmployees(string connectionString)
+            => WithConnection(connectionString, async conn =>
+                {
+                    var result = await conn.QueryAsync<Employee>(
+                        "SELECT first_name as FirstName, last_name as LastName, address as Address " +
+                        "FROM Employee");
+
+                    return result;
+                });
+
+
         private static async Task<T> WithConnection<T>(
             string connectionString,
             Func<IDbConnection, Task<T>> connectionFunction)
@@ -85,6 +102,18 @@ namespace PostgresCookieDave.Web.Pages
                 return await connectionFunction(conn);
             }
         }
+
+        //private static async Task WithConnection(
+        //    string connectionString,
+        //    Func<IDbConnection, Task> connectionFunction)
+        //{
+        //    using (var conn = new NpgsqlConnection(connectionString))
+        //    {
+        //        conn.Open();
+
+        //        await connectionFunction(conn);
+        //    }
+        //}
 
     }
 

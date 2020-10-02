@@ -1,3 +1,3 @@
 CREATE ROLE bob SUPERUSER LOGIN PASSWORD 'letmein3';
 
-CREATE DATABASE postgrescookiedave;
+

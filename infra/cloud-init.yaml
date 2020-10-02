@@ -1,9 +1,9 @@
 #cloud-config
 
-# /var/log/cloud-init-output.log for debugging this script 
+# /var/log/cloud-init-output.log - cloud init logs (this script)
 
-# kestrel (.NET Serilog) logs in /var/www/web/logs/
-# nginx logs in /usr/local/openresty/nginx/logs/error.log and access.log
+# kestrel (.NET Serilog) logs in /var/www/web/logs/ - application logs
+# nginx /var/log/nginx/ error.log and access.log - full http logs
 
 
 # nginx conf in /usr/local/openresty/nginx/conf

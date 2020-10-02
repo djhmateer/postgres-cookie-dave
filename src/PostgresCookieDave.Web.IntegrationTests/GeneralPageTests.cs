@@ -24,8 +24,7 @@ namespace CookieDave.Web.IntegrationTests
             new object[] {"/Index"},
             new object[] {"/healthcheck"},
             new object[] {"/Anonymous"},
-            new object[] {"/Enquiry"},
-            new object[] {"/Error"}
+            new object[] {"/Enquiry"}
         };
 
         [Theory]

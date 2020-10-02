@@ -34,6 +34,16 @@ namespace CookieDave.Web.IntegrationTests
 
             Assert.Equal("Sorry - 404 Not Found", h1.TextContent);
         }
+
+        [Fact]
+        public async Task Get_ErrorShouldReturn500()
+        {
+            var client = _factory.CreateClient();
+
+            var response = await client.GetAsync("/Error");
+
+            Assert.Equal(HttpStatusCode.InternalServerError, response.StatusCode);
+        }
     }
 
 }

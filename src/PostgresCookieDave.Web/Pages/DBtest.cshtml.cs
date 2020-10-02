@@ -21,10 +21,7 @@ namespace PostgresCookieDave.Web.Pages
         public Employee SingleEmployee { get; set; }
         public IList<Employee> Employees { get; set; }
 
-        public DBTestModel(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
+        public DBTestModel(IConfiguration configuration) => _configuration = configuration;
 
         public async Task OnGetAsync()
         {
@@ -80,7 +77,7 @@ namespace PostgresCookieDave.Web.Pages
                 {
                     var result = await conn.QueryAsync<Employee>(
                         "SELECT first_name as FirstName, last_name as LastName, address as Address " +
-                        "FROM Employee");
+                        "FROM employee");
 
                     return result.FirstOrDefault();
                 });
@@ -90,7 +87,7 @@ namespace PostgresCookieDave.Web.Pages
                 {
                     var result = await conn.QueryAsync<Employee>(
                         "SELECT first_name as FirstName, last_name as LastName, address as Address " +
-                        "FROM Employee");
+                        "FROM employee");
 
                     return result;
                 });

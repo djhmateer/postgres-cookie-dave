@@ -101,4 +101,6 @@ runcmd:
   # - echo "Healthy" > healthcheck.html
 
 # OS updates need a reboot 
-  - sudo reboot now
+#  - sudo reboot now
+
+final_message: "The system is finally up, after $UPTIME seconds"

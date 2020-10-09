@@ -1,5 +1,5 @@
 COPY master_plan
-FROM 'master_plan.csv'
+FROM '/home/dave/source/infra/master_plan.csv'
 WITH DELIMITER ',' HEADER CSV;;
 
 alter table master_plan

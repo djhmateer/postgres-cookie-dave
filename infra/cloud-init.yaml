@@ -95,6 +95,7 @@ runcmd:
   # insert seed data
   - sudo -u postgres psql -d postgrescookiedave -a -f create_tables.sql
   - sudo -u postgres psql -d postgrescookiedave -a -f insert_data.sql
+  - sudo -u postgres psql -d postgrescookiedave -a -f import_data.sql
 
 # make a quick test page to signify that the server is ready to go
   # - cd /var/www/cookie-dave-web

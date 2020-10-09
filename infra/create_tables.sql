@@ -30,8 +30,19 @@ CREATE TABLE schedule (
 );
 
 
+-- my test table
 CREATE TABLE employee (
     first_name varchar (99),
     last_name varchar (100), 
     address varchar (4000)
+);
+
+-- rob's cassini
+-- no pk yet
+create table master_plan(
+  date text,
+  team text,
+  target text,
+  title text,
+  description text
 );

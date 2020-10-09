@@ -22,41 +22,105 @@ namespace PostgresCookieDave.Web.Pages
 
         public async Task OnGetAsync()
         {
-            // works
-            //using (var connection = new NpgsqlConnection("Host=localhost;Username=postgres;Password=letmein;Database=PostgresCookieDave"))
-            //{
-            //    connection.Open();
-            //    //connection.Execute("Insert into Employee (first_name, last_name, address) values ('John', 'Smith', '123 Duane St');");
-            //    var value = connection.Query("Select first_name from Employee;");
-            //    Message = $"name in db is: {value.First()}";
-            //    //Console.WriteLine(value.First());
-            //}
-
-            // doesn't work
-            //var db = GetOpenConnection();
-            ////var employeex = db.Query<Employee>("Select first_name from Employee");
-            //var employeex = db.Query("Select first_name from Employee");
-            //var employee = employeex.First();
-            //Message2 = $"{employee.first_name} {employee.last_name} {employee.address}";
-
-            // try3 
-            //var connectionString = "Host=localhost;Username=postgres;Password=letmein;Database=PostgresCookieDave";
-
             var connectionString = _configuration.GetConnectionString("Default");
 
-            var things= await Db2.GetThings(connectionString);
+
+            // 1.works
+            //using (var conn = new NpgsqlConnection(connectionString))
+            //{
+            //    conn.Open();
+            //    var result = await conn.QueryAsync<Thing>(
+            //        "SELECT id as Id, date as Date, team as Team, target as Target, title as Title, description as Description " +
+            //        "FROM master_plan LIMIT 10");
+            //    Things = result.ToList();
+            //}o
+
+            // 1.5 works.. nice
+            //using var db = GetOpenConnection(connectionString);
+            //var result = db.Query<Thing>("SELECT id as Id, date as Date, team as Team, target as Target, " +
+            //                             "title as Title, description as Description " +
+            //                             "FROM master_plan LIMIT 10");
+            //Things = result.ToList();
+
+            // 1.7 works and simple
+            var things = await Db3.GetThings(connectionString);
             Things = things.ToList();
-            }
 
-        //public static IDbConnection GetOpenConnection()
+            // 2. works but clunky (probably use DI to inject in)
+            //var conn = new SqlConnectionFactory(connectionString);
+            //var db = conn.GetOpenConnection();
+            //var result = await db.QueryAsync<Thing>(
+            //    "SELECT id as Id, date as Date, team as Team, target as Target, title as Title, description as Description " +
+            //    "FROM master_plan LIMIT 10");
+            //Things = result.ToList();
+
+            // try3 - works
+            //var things = await Db2.GetThings(connectionString);
+            //Things = things.ToList();
+        }
+
+        //public static IDbConnection GetOpenConnection(string connectionString)
         //{
-        //    using (var connection = new NpgsqlConnection("Host=localhost;Username=postgres;Password=letmein;Database=PostgresCookieDave"))
-        //    {
-        //        connection.Open();
+        //    var connection = new NpgsqlConnection(connectionString);
 
-        //        return connection;
+        //    connection.Open();
+
+        //    return connection;
+        //}
+        //public class SqlConnectionFactory : IDisposable
+        //{
+        //    private readonly string _connectionString;
+        //    private IDbConnection _connection;
+
+        //    public SqlConnectionFactory(string connectionString)
+        //    {
+        //        _connectionString = connectionString;
+        //    }
+        //    public IDbConnection GetOpenConnection()
+        //    {
+        //        if (_connection == null || _connection.State != ConnectionState.Open)
+        //        {
+        //            _connection = new NpgsqlConnection(_connectionString);
+        //            _connection.Open();
+        //        }
+
+        //        return _connection;
+        //    }
+
+        //    public void Dispose()
+        //    {
+        //        if (_connection != null && _connection.State == ConnectionState.Open)
+        //        {
+        //            _connection.Dispose();
+        //        }
         //    }
         //}
+
+
+    }
+
+    public static class Db3
+    {
+        public static async Task<IEnumerable<Thing>> GetThings(string connectionString)
+        {
+            using var db = GetOpenConnection(connectionString);
+            var result = await db.QueryAsync<Thing>("SELECT id as Id, date as Date, team as Team, target as Target, " +
+                                                    "title as Title, description as Description " +
+                                                    "FROM master_plan LIMIT 10");
+            return result;
+        }
+
+
+        public static IDbConnection GetOpenConnection(string connectionString)
+        {
+            var connection = new NpgsqlConnection(connectionString);
+
+            connection.Open();
+
+            return connection;
+        }
+
+
     }
 
     public static class Db2

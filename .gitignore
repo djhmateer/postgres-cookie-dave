@@ -344,3 +344,4 @@ healthchecksdb
 secrets
 # generated helper file for ssh'ing
 a.bat
+logs

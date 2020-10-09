@@ -35,7 +35,9 @@ nicName=nic${int}
 image=UbuntuLTS
 
 # useful in dev to always commit the infra code
+cd ..
 git add . && git commit -m "auto" && git push
+cd infra
 
 # Create a resource group
 az group create \

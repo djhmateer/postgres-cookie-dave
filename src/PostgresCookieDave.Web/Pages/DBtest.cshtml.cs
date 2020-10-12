@@ -8,6 +8,7 @@ using Dapper;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
+using PostgresCookieDave.Web.Services;
 using Serilog;
 
 namespace PostgresCookieDave.Web.Pages
@@ -58,67 +59,9 @@ namespace PostgresCookieDave.Web.Pages
             var employees = await Db.GetEmployees(connectionString);
             Employees = employees.ToList();
         }
-
-        //public static IDbConnection GetOpenConnection()
-        //{
-        //    using (var connection = new NpgsqlConnection("Host=localhost;Username=postgres;Password=letmein;Database=PostgresCookieDave"))
-        //    {
-        //        connection.Open();
-
-        //        return connection;
-        //    }
-        //}
     }
 
-    public static class Db
-    {
-        public static Task<Employee> GetSingleEmployee(string connectionString)
-            => WithConnection(connectionString, async conn =>
-                {
-                    var result = await conn.QueryAsync<Employee>(
-                        "SELECT first_name as FirstName, last_name as LastName, address as Address " +
-                        "FROM employee");
-
-                    return result.FirstOrDefault();
-                });
-
-        public static Task<IEnumerable<Employee>> GetEmployees(string connectionString)
-            => WithConnection(connectionString, async conn =>
-                {
-                    var result = await conn.QueryAsync<Employee>(
-                        "SELECT first_name as FirstName, last_name as LastName, address as Address " +
-                        "FROM employee");
-
-                    return result;
-                });
-
-
-        private static async Task<T> WithConnection<T>(
-            string connectionString,
-            Func<IDbConnection, Task<T>> connectionFunction)
-        {
-            using (var conn = new NpgsqlConnection(connectionString))
-            {
-                conn.Open();
-
-                return await connectionFunction(conn);
-            }
-        }
-
-        //private static async Task WithConnection(
-        //    string connectionString,
-        //    Func<IDbConnection, Task> connectionFunction)
-        //{
-        //    using (var conn = new NpgsqlConnection(connectionString))
-        //    {
-        //        conn.Open();
-
-        //        await connectionFunction(conn);
-        //    }
-        //}
-
-    }
-
+   
     public class Employee
     {
         // hacking EF

@@ -1,2 +1,2 @@
-az group delete --name PostgresCookieDaveTEST183 --no-wait --yes 
+az group delete --name PostgresCookieDaveTEST559 --no-wait --yes 
 
